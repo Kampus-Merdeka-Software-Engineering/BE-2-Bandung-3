@@ -27,23 +27,36 @@ app.get("/", function (req, res)
 	response.send("Ini respon")
 });
 
-app.get("/destination/id", async (req, res) => 
+app.post("/booking", async (req, res) =>
 {
-	const destination = await prisma.destination.findUnique({
-		where:
+	const {name, email, phone, date_destination, from, to, adult, children, airline} = req.body;
+	const newBooking = await prisma.booking.create
+	({
+		data:
 		{
-			id: parseInt(req.params.id),
+			name: name,
+			email: email,
+			phone: phone,
+			date_destination: date_destination,
+			from: from,
+			to: to,
+			adult: adult,
+			children: children,
+			airline: airline,
 		},
 	});
-	if (!destination.length) res.status(404).send("destination");
-	else res.status(200).send(destination);
+		res.status(201).send
+		({
+			message: "Booked",
+			data: newBooking,
+		});
 });
 
-app.get("/destination", async (req, res) => 
-{
-	const destination = await prisma.destination.findMany();
-	res.status(200).send(destination)
-});
+// app.get("/destination", async (req, res) => 
+// {
+// 	const destination = await prisma.destination.findMany();
+// 	res.status(200).send(destination)
+// });
 
 app.all("*", (req, res) =>
 {
