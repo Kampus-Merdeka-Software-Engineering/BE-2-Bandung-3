@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const fs = require("fs");
 const cors = require("cors");
+const {bookingRoutes} = require("./routes/booking.routes")
 const PORT = 3000;
 const {prisma} = require("./config/prisma")
 
@@ -27,47 +28,8 @@ app.get("/", async (req, res) =>
 	res.send("Ini respon")
 });
 
-app.get("/booking/:id", async (req, res) => 
-{
-	const booking = await prisma.booking.findUnique
-	({
-		where: 
-		{
-			id: parseInt(req.params.id),
-		},
-	});
-	if (!booking)
-	{
-		res.status(404).send({message: "Booking not found"})
-	}
-	else res.status(200).send(booking);
-});
-
-app.post("/booking", async (req, res) =>
-{
-	const {name, email, phone, date_destination, from, to, adult, children, airline} = req.body;
-	const newBooking = await prisma.booking.create
-	({
-		data:
-		{
-			name: name,
-			email: email,
-			phone: parseInt(phone),
-			date_destination: date_destination,
-			from: from,
-			to: to,
-			adult: parseInt(adult),
-			children: parseInt(children),
-			airline: airline,
-		},
-	});
-		res.status(201).send
-		({
-			message: "Booked",
-			data: newBooking,
-		});
-});
-
+//booking routes
+app.use("/booking", bookingRoutes);
 
 app.all("*", async (req, res) =>
 {
