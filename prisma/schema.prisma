@@ -15,7 +15,7 @@ model booking {
   name String
   email String 
   phone Int
-  date_destination DateTime?
+  date_destination String?
   from String?
   to String?
   adult Int

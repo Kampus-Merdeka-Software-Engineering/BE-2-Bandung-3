@@ -56,8 +56,8 @@ app.post("/booking", async (req, res) =>
 			date_destination: date_destination,
 			from: from,
 			to: to,
-			adult: adult,
-			children: children,
+			adult: parseInt(adult),
+			children: parseInt(children),
 			airline: airline,
 		},
 	});
