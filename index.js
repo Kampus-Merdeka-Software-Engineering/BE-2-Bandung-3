@@ -22,9 +22,25 @@ const loggerMiddleware = (req, res, next) => {
 
 app.use(loggerMiddleware);
 
-app.get("/", function (req, res) 
+app.get("/", async (req, res) =>
 {
-	response.send("Ini respon")
+	res.send("Ini respon")
+});
+
+app.get("/booking/:id", async (req, res) => 
+{
+	const booking = await prisma.booking.findUnique
+	({
+		where: 
+		{
+			id: parseInt(req.params.id),
+		},
+	});
+	if (!booking)
+	{
+		res.status(404).send({message: "Booking not found"})
+	}
+	else res.status(200).send(booking);
 });
 
 app.post("/booking", async (req, res) =>
@@ -36,7 +52,7 @@ app.post("/booking", async (req, res) =>
 		{
 			name: name,
 			email: email,
-			phone: phone,
+			phone: parseInt(phone),
 			date_destination: date_destination,
 			from: from,
 			to: to,
@@ -52,16 +68,12 @@ app.post("/booking", async (req, res) =>
 		});
 });
 
-// app.get("/destination", async (req, res) => 
-// {
-// 	const destination = await prisma.destination.findMany();
-// 	res.status(200).send(destination)
-// });
 
-app.all("*", (req, res) =>
+app.all("*", async (req, res) =>
 {
 	res.status(404).send("404 not found")
 })
+
 
 app.listen(PORT, "0.0.0.0", () => 
 {
