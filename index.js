@@ -1,9 +1,10 @@
+require("dotenv").config();
 const express = require('express');
 const app = express();
 const fs = require("fs");
 const cors = require("cors");
 const {bookingRoutes} = require("./routes/booking.routes")
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const {prisma} = require("./config/prisma")
 
  
