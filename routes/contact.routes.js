@@ -33,7 +33,7 @@ contactRoutes.post("/", async (req, res) =>
 		data:
 		{
 			email: email,
-			message: message
+			message: message,
 		},
 	});
 		res.status(201).send
