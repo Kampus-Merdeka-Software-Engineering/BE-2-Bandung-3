@@ -31,6 +31,8 @@ app.get("/", async (req, res) =>
 	res.send("Ini respon")
 });
 
+//contact routes
+app.use("/contact", ContactRoutes);
 
 //booking routes
 app.use("/booking", bookingRoutes);

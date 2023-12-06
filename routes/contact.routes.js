@@ -28,7 +28,7 @@ ContactRoutes.get("/:id", async (req, res) =>
 ContactRoutes.post("/", async (req, res) =>
 {
 	const {email, message} = req.body;
-	const newBooking = await prisma.booking.create
+	const newContact = await prisma.booking.create
 	({
 		data:
 		{
