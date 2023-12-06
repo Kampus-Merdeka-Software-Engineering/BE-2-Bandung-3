@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const fs = require("fs");
 const cors = require("cors");
+const {ContactRoutes} = require("./routes/contact.routes")
 const {bookingRoutes} = require("./routes/booking.routes")
 const PORT = process.env.PORT || 3000;
 const {prisma} = require("./config/prisma")
@@ -24,10 +25,20 @@ const loggerMiddleware = (req, res, next) => {
 
 app.use(loggerMiddleware);
 
+
 app.get("/", async (req, res) =>
 {
 	res.send("Ini respon")
 });
+
+//contact routes
+app.use("/contact", ContactRoutes);
+
+app.all("*", async (req, res) =>
+{
+	res.status(404).send("404 not found")
+})
+
 
 //booking routes
 app.use("/booking", bookingRoutes);

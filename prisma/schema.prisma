@@ -23,5 +23,9 @@ model booking {
   airline String?
 }
 
-
+model Contact {
+  id      Int      @id @default(autoincrement())
+  email String
+  message String
+}
 
