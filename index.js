@@ -8,7 +8,7 @@ const {bookingRoutes} = require("./routes/booking.routes")
 const PORT = process.env.PORT || 3000;
 const {prisma} = require("./config/prisma")
 
- 
+
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors());
@@ -31,8 +31,6 @@ app.get("/", async (req, res) =>
 	res.send("Ini respon")
 });
 
-//contact routes
-app.use("/contact", ContactRoutes);
 
 //booking routes
 app.use("/booking", bookingRoutes);
