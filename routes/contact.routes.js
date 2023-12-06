@@ -20,7 +20,7 @@ contactRoutes.get("/:id", async (req, res) =>
 	});
 	if (!contact)
 	{
-		res.status(404).send({message: "Message Not send"})
+		res.status(404).send({message: "There is no contact"})
 	}
 	else res.status(200).send(contact);
 });
