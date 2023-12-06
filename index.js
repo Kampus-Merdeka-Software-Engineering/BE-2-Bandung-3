@@ -34,12 +34,6 @@ app.get("/", async (req, res) =>
 //contact routes
 app.use("/contact", ContactRoutes);
 
-app.all("*", async (req, res) =>
-{
-	res.status(404).send("404 not found")
-})
-
-
 //booking routes
 app.use("/booking", bookingRoutes);
 
