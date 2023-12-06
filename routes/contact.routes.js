@@ -1,15 +1,15 @@
 const express = require("express");
-const ContactRoutes = express.Router();
+const contactRoutes = express.Router();
 const {prisma} = require("../config/prisma");
 
 
-ContactRoutes.get("/", async (req, res) =>
+contactRoutes.get("/", async (req, res) =>
 {
 	const contact = await prisma.contact.findMany();
 	res.status(200).send(contact);
 });
 
-ContactRoutes.get("/:id", async (req, res) => 
+contactRoutes.get("/:id", async (req, res) => 
 {
 	const contact = await prisma.contact.findUnique
 	({
@@ -25,10 +25,10 @@ ContactRoutes.get("/:id", async (req, res) =>
 	else res.status(200).send(contact);
 });
 
-ContactRoutes.post("/", async (req, res) =>
+contactRoutes.post("/", async (req, res) =>
 {
 	const {email, message} = req.body;
-	const newBooking = await prisma.booking.create
+	const newContact = await prisma.contact.create
 	({
 		data:
 		{
@@ -43,4 +43,4 @@ ContactRoutes.post("/", async (req, res) =>
 		});
 });
 
-module.exports = {ContactRoutes}
+module.exports = {contactRoutes}

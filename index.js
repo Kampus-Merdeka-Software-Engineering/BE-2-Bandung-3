@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const fs = require("fs");
 const cors = require("cors");
-const {ContactRoutes} = require("./routes/contact.routes")
+const {contactRoutes} = require("./routes/contact.routes")
 const {bookingRoutes} = require("./routes/booking.routes")
 const PORT = process.env.PORT || 3000;
 const {prisma} = require("./config/prisma")
@@ -32,7 +32,7 @@ app.get("/", async (req, res) =>
 });
 
 //contact routes
-app.use("/contact", ContactRoutes);
+app.use("/contact", contactRoutes);
 
 //booking routes
 app.use("/booking", bookingRoutes);
@@ -41,7 +41,6 @@ app.all("*", async (req, res) =>
 {
 	res.status(404).send("404 not found")
 })
-
 
 app.listen(PORT, "0.0.0.0", () => 
 {
