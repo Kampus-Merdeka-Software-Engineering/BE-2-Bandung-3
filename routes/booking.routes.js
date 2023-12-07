@@ -2,13 +2,14 @@ const express = require("express");
 const bookingRoutes = express.Router();
 const {prisma} = require("../config/prisma");
 
-
+// get all booking
 bookingRoutes.get("/", async (req, res) =>
 {
 	const booking = await prisma.booking.findMany();
 	res.status(200).send(booking);
 });
 
+// get booking
 bookingRoutes.get("/:id", async (req, res) => 
 {
 	const booking = await prisma.booking.findUnique
@@ -25,6 +26,7 @@ bookingRoutes.get("/:id", async (req, res) =>
 	else res.status(200).send(booking);
 });
 
+// post booking
 bookingRoutes.post("/", async (req, res) =>
 {
 	const {name, email, phone, date_destination, from, to, adult, children, airline} = req.body;
