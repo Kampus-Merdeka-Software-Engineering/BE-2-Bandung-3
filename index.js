@@ -25,7 +25,6 @@ const loggerMiddleware = (req, res, next) => {
 
 app.use(loggerMiddleware);
 
-
 app.get("/", async (req, res) =>
 {
 	res.send("Ini respon")

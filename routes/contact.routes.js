@@ -3,6 +3,7 @@ const contactRoutes = express.Router();
 const {prisma} = require("../config/prisma");
 
 
+
 contactRoutes.get("/", async (req, res) =>
 {
 	const contact = await prisma.contact.findMany();
