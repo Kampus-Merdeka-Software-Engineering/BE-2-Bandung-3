@@ -25,10 +25,13 @@ contactRoutes.get("/:id", async (req, res) =>
 	else res.status(200).send(contact);
 });
 
+
+
+
 contactRoutes.post("/", async (req, res) =>
 {
 	const {email, message} = req.body;
-	const newContact = await prisma.contact.create
+	const newContact = await prisma.contact.create;
 	({
 		data:
 		{
