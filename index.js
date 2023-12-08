@@ -25,7 +25,7 @@ app.use(loggerMiddleware);
 
 app.get("/", async (req, res) =>
 {
-	res.send("Server Active")
+	res.send("Ini Respon")
 });
 
 //contact routes
