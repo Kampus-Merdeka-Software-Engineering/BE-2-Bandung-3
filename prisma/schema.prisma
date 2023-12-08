@@ -14,12 +14,12 @@ model booking {
   id Int @id @default(autoincrement())
   name String
   email String 
-  phone Int
+  phone String
   date_destination String?
   from String?
   to String?
-  adult Int
-  children Int
+  adult String
+  children String
   airline String?
 }
 
