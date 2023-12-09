@@ -18,8 +18,8 @@ model booking {
   date_destination String?
   from String?
   to String?
-  adult String
-  children String
+  adult Int
+  children Int
   airline String?
 }
 
