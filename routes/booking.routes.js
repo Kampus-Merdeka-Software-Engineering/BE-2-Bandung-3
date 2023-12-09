@@ -36,12 +36,12 @@ bookingRoutes.post("/", async (req, res) =>
 		{
 			name: name,
 			email: email,
-			phone: parseInt(phone),
+			phone: phone,
 			date_destination: date_destination,
 			from: from,
 			to: to,
-			adult: parseInt(adult),
-			children: parseInt(children),
+			adult: adult,
+			children: children,
 			airline: airline,
 		},
 	});
