@@ -14,13 +14,13 @@ model booking {
   id Int @id @default(autoincrement())
   name String
   email String 
-  phone String?
-  date_destination String?
-  from String?
-  to String?
-  adult String?
-  children String?
-  airline String?
+  phone String
+  date_destination String
+  from String
+  to String
+  adult String
+  children String
+  airline String
 }
 model contact{
   id Int @id @default(autoincrement())
